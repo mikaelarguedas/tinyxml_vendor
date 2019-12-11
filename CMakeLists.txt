@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.5)
 project(tinyxml_vendor)
 
+find_package(ament_cmake REQUIRED)
+
 option(FORCE_BUILD_VENDOR_PKG
   "Build TinyXML from source, even if system-installed package is available"
   OFF)
@@ -41,6 +43,8 @@ configure_file(tinyxml_vendorConfig.cmake.in "${PROJECT_BINARY_DIR}/tinyxml_vend
 configure_file(tinyxml_vendorConfig-version.cmake.in "${PROJECT_BINARY_DIR}/tinyxml_vendorConfig-version.cmake" @ONLY)
 
 install(DIRECTORY cmake DESTINATION share/${PROJECT_NAME})
+
+ament_index_register_package()
 
 install(FILES
   package.xml
